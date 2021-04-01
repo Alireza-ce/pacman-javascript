@@ -23,5 +23,10 @@
 
 .power-pellet{
     background-color: green;
-    border-radius: 10px;
+    border-radius: 100px;
+}
+
+.pac-man{
+    background-color: yellow;
+    border-radius: 100%;
 }
