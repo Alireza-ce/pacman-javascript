@@ -106,9 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         squares[pacmanCurrentIndex].classList.add('pac-man')
         pacDotEaten()
-        // powerPelletEaten()
-        // checkForGameOver()
-        // checkForWin()
+        //checkForWin()
     }
 
     document.addEventListener('keyup', movePacman)
@@ -124,4 +122,54 @@ document.addEventListener('DOMContentLoaded', () => {
             squares[pacmanCurrentIndex].classList.remove('power-pellet')
         }
     }
+
+    class Ghost {
+        constructor(className, startIndex, speed) {
+            this.className = className;
+            this.startIndex = startIndex;
+            this.speed = speed;
+            this.currentIndex = startIndex;
+        }
+    }
+
+    ghosts = [
+        new Ghost('blinky', 348, 250),
+        new Ghost('pinky', 376, 400),
+        new Ghost('inky', 351, 300),
+        new Ghost('clyde', 379, 500)
+    ]
+
+    ghosts.forEach(ghost => {
+        squares[ghost.currentIndex].classList.add(ghost.className)
+        squares[ghost.currentIndex].classList.add('ghost')
+    })
+
+    ghosts.forEach(ghost => {
+        moveGhost(ghost)
+    })
+
+    function moveGhost(ghost) {
+        let directions = [1, -1, width, -width]
+        let ghostNextMove = Math.floor(Math.random() * directions.length);
+        setInterval(() => {
+            checkForGameOver(ghost)
+            if (!squares[ghost.currentIndex + directions[ghostNextMove]].classList.contains('ghost') &&
+                !squares[ghost.currentIndex + directions[ghostNextMove]].classList.contains('wall')) {
+                squares[ghost.currentIndex].classList.remove(ghost.className)
+                squares[ghost.currentIndex].classList.remove('ghost')
+                ghost.currentIndex += directions[ghostNextMove]
+                squares[ghost.currentIndex].classList.add(ghost.className, 'ghost')
+            } else {
+                ghostNextMove = Math.floor(Math.random() * directions.length);
+            }
+        }, ghost.speed)
+
+    }
+
+   function checkForGameOver(ghost){
+       if(ghost.currentIndex ==  pacmanCurrentIndex){
+           alert('game over')
+           //reload game
+       }
+   }
 })

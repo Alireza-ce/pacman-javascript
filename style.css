@@ -30,3 +30,20 @@
     background-color: yellow;
     border-radius: 100%;
 }
+
+
+.blinky {
+    background-color: red;
+}
+
+.pinky {
+    background-color: pink;
+}
+
+.inky {
+    background-color: cyan;
+}
+
+.clyde {
+    background-color: orange;     
+}
