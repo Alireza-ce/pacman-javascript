@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
         1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1,
         1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 1, 1, 2, 2, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 2, 2, 2, 2, 2, 2, 2, 2, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1,
         1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 2, 2, 2, 2, 2, 2, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1,
         4, 4, 4, 4, 4, 4, 0, 0, 0, 4, 1, 2, 2, 2, 2, 2, 2, 1, 4, 0, 0, 0, 4, 4, 4, 4, 4, 4,
         1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 2, 2, 2, 2, 2, 2, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1,
@@ -64,6 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function movePacman(e) {
         squares[pacmanCurrentIndex].classList.remove('pac-man')
+        squares[pacmanCurrentIndex].classList.remove('to-right')
+        squares[pacmanCurrentIndex].classList.remove('to-left')
+        squares[pacmanCurrentIndex].classList.remove('to-down')
+        squares[pacmanCurrentIndex].classList.remove('to-up')
         switch (e.keyCode) {
             case 37:
                 if (
@@ -72,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     !squares[pacmanCurrentIndex - 1].classList.contains('ghost-lair')
                 )
                     pacmanCurrentIndex -= 1
+                squares[pacmanCurrentIndex].classList.add('to-left')
                 if (squares[pacmanCurrentIndex - 1] === squares[363]) {
                     pacmanCurrentIndex = 391
                 }
@@ -83,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     !squares[pacmanCurrentIndex - width].classList.contains('ghost-lair')
                 )
                     pacmanCurrentIndex -= width
+                squares[pacmanCurrentIndex].classList.add('to-up')
                 break
             case 39:
                 if (
@@ -91,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     !squares[pacmanCurrentIndex + 1].classList.contains('ghost-lair')
                 )
                     pacmanCurrentIndex += 1
+                squares[pacmanCurrentIndex].classList.add('to-right')
                 if (squares[pacmanCurrentIndex + 1] === squares[392]) {
                     pacmanCurrentIndex = 364
                 }
@@ -102,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     !squares[pacmanCurrentIndex + width].classList.contains('ghost-lair')
                 )
                     pacmanCurrentIndex += width
+                squares[pacmanCurrentIndex].classList.add('to-down')
                 break
         }
         squares[pacmanCurrentIndex].classList.add('pac-man')
@@ -134,7 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     ghosts = [
         new Ghost('blinky', 348, 250),
-        new Ghost('pinky', 376, 400),
         new Ghost('inky', 351, 300),
         new Ghost('clyde', 379, 500)
     ]
@@ -166,10 +173,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
-   function checkForGameOver(ghost){
-       if(ghost.currentIndex ==  pacmanCurrentIndex){
-           alert('game over')
-           //reload game
-       }
-   }
+    function checkForGameOver(ghost) {
+        if (ghost.currentIndex == pacmanCurrentIndex) {
+            alert('game over')
+            //reload game
+        }
+    }
 })

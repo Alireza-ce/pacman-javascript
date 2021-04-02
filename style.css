@@ -1,49 +1,80 @@
-.grid{
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #212121;
+}
+
+.grid {
     display: flex;
     flex-wrap: wrap;
     width: 560px;
     height: 560px;
-    border: 1px solid black;
+    margin: auto;
+    margin-top: 32px;
+    background-color: rgb(24, 24, 24);
 }
 
-.grid div{
+.grid div {
     width: 20px;
     height: 20px;
 }
 
-.pac-dot{
-    background-color: green;
-    border: 5px solid white;
+.pac-dot {
+    background-color: #ffb897;
+    border: 7px solid rgb(24, 24, 24);
     box-sizing: border-box;
 }
 
-.wall{
-    background-color: blue;
+.wall {
+    background-color: #2121de;
 }
 
-.power-pellet{
-    background-color: green;
-    border-radius: 100px;
-}
-
-.pac-man{
-    background-color: yellow;
+.power-pellet {
+    background-color: #ffb897;
+    border: 2px solid rgb(24, 24, 24);
     border-radius: 100%;
 }
 
-
-.blinky {
-    background-color: red;
+.pac-man {
+    background: url('images/pacman.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-.pinky {
-    background-color: pink;
+.ghost {
+    border: none;
+}
+
+.to-right {
+    transform: rotate(0);
+}
+
+.to-left {
+    transform: rotate(180deg);
+}
+
+.to-down {
+    transform: rotate(90deg);
+}
+
+.to-up {
+    transform: rotate(-90deg);
+}
+
+.blinky {
+    background: url('images/red-ghost.png');
+    background-size: contain;
 }
 
 .inky {
-    background-color: cyan;
+    background: url('images/yellow-ghost.png');
+    background-size: contain;
 }
 
 .clyde {
-    background-color: orange;     
+    background: url('images/blue-ghost.png');
+    background-size: contain;
 }
