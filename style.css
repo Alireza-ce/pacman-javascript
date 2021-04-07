@@ -3,7 +3,15 @@
 }
 
 body {
+    margin: 0;
+    padding: 0;
     background-color: #212121;
+}
+
+.container{
+    max-width: 800px;
+    margin: auto;
+    padding: 0 15px;
 }
 
 .grid {
