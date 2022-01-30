@@ -86,3 +86,35 @@ body {
     background: url('images/blue-ghost.png');
     background-size: contain;
 }
+
+.button-group{
+    display: flex;
+    justify-content: center;
+    margin: 12px 0;
+}
+
+.button-group button {
+    margin: 0 12px;
+    padding: 12px 32px;
+    background-color: rgb(220,220, 220);
+    color: black;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 1px 1px 5px 0 rgba(0,0,0, 0.5) inset, 3px 3px 8px 0 rgba(255, 255, 255, 0.5);
+}
+
+.button-group button:hover {
+    box-shadow: 2px 2px 15px 0 rgba(255, 255, 255, 0.5)
+}
+
+.score-box{
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.score-box p{
+    margin: 4px;
+}
